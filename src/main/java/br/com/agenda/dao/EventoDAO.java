@@ -45,15 +45,17 @@ public class EventoDAO {
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+			
+			
 			ResultSet rs = stmt.executeQuery();
 
-			List<Evento> chamados = new ArrayList<Evento>();
+			List<Evento> listaDeEventos = new ArrayList<Evento>();
 
-			while (rs.next()) {
-				chamados.add(parser(rs));
+			while (rs.next()) {				
+				listaDeEventos.add(parser(rs));
 			}
 
-			return chamados;
+			return listaDeEventos;
 		} catch (SQLException e) {
 			throw e;
 		}
