@@ -9,3 +9,7 @@ CREATE TABLE evento (
   id INT NOT NULL AUTO_INCREMENT,
   descricao VARCHAR(45) NULL,
   PRIMARY KEY (id));
+
+  
+  -- consulta todos os registros da tabela
+  select * from evento;
