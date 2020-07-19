@@ -35,7 +35,7 @@ public class TesteEvento {
 		
 		EventoDAO evDAO = new EventoDAO();
 		
-		evDAO.deletar(2);
+		System.out.println(evDAO.listarPorId(1));
 		
 	}
 

@@ -96,5 +96,28 @@ public class EventoDAO {
 			throw e;
 		}
 	}
+	
+	
+	public List<Evento> listarPorId(int id) throws SQLException, ClassNotFoundException {
+		String sqlQuery = "select descricao from evento where id = ? ; ";
+
+		try {
+			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+			
+			stmt.setInt(1, id);
+
+			ResultSet rs = stmt.executeQuery();
+
+			List<Evento> listaDeEventos = new ArrayList<Evento>();
+
+			while (rs.next()) {
+				listaDeEventos.add(parser(rs));
+			}
+
+			return listaDeEventos;
+		} catch (SQLException e) {
+			throw e;
+		}
+	}
 
 }
