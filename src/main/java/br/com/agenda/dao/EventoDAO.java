@@ -1,7 +1,10 @@
 package br.com.agenda.dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.agenda.data.ConexaoJDBC;
 import br.com.agenda.data.ConexaoMysqlJDBC;
@@ -19,7 +22,7 @@ public class EventoDAO {
 	public Long inserir(Evento ev) throws SQLException, ClassNotFoundException {
 		
 		Long id = null;
-		String sqlQuery = "INSERT INTO evento (descricao) VALUES (?) ";
+		String sqlQuery = "INSERT INTO evento (descricao) VALUES (?); ";
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
@@ -34,5 +37,30 @@ public class EventoDAO {
 		}
 
 		return id;
+	}
+
+
+	public List<Evento> listar() throws SQLException, ClassNotFoundException {
+		String sqlQuery = "select descricao from evento order by descricao ; ";
+
+		try {
+			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+			ResultSet rs = stmt.executeQuery();
+
+			List<Evento> chamados = new ArrayList<Evento>();
+
+			while (rs.next()) {
+				chamados.add(parser(rs));
+			}
+
+			return chamados;
+		} catch (SQLException e) {
+			throw e;
+		}
+	}
+	
+	private Evento parser(ResultSet resultSet) throws SQLException {
+		Evento c = new Evento(resultSet.getString("descricao"));
+		return c;
 	}
 }
