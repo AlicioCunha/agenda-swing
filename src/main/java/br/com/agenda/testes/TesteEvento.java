@@ -9,11 +9,19 @@ public class TesteEvento {
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		
-		Evento ev1 = new Evento("Festa a fantasia");
+		/*
+		Testanto a inserção de evento
+		Evento ev1 = new Evento("Aula de java no domingo na proway");
 		EventoDAO evDAO = new EventoDAO();
 		
-		evDAO.inserir(ev1);		
+		evDAO.inserir(ev1);	*/	
 		
+		
+		/*Testando a busca de todos os evento*/
+		
+		EventoDAO evDAO = new EventoDAO();
+		
+		System.out.println(evDAO.listar());
 	}
 
 }

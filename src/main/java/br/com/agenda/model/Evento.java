@@ -27,7 +27,7 @@ public class Evento {
 
 	@Override
 	public String toString() {
-		return "Evento [id=" + id + ", descricao=" + descricao + "]";
+		return "descricao=" + descricao + "] \n ";
 	}	
 	
 }
