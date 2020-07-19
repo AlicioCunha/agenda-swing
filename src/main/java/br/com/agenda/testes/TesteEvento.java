@@ -17,11 +17,26 @@ public class TesteEvento {
 		evDAO.inserir(ev1);	*/	
 		
 		
-		/*Testando a busca de todos os evento*/
+		/*Testando a busca de todos os evento
 		
 		EventoDAO evDAO = new EventoDAO();
 		
 		System.out.println(evDAO.listar());
+		
+		*/
+		
+		
+		/*Teste de alteracao do registro
+		EventoDAO evDAO = new EventoDAO();
+		
+		evDAO.alterar("Baile Gaucho", "3");
+		
+		*/
+		
+		EventoDAO evDAO = new EventoDAO();
+		
+		evDAO.deletar(2);
+		
 	}
 
 }
